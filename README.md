@@ -132,11 +132,37 @@ Ejecuta ESLint para comprobar la calidad del código.
 
 ## Cómo ejecutar el proyecto
 
+Configura primero las variables de EmailJS (ver la sección siguiente) para habilitar el envío del formulario.
+
 ```bash
 npm run dev
 ```
 
 A continuación, abre la URL que indique la terminal (por ejemplo, http://localhost:5173).
+
+## Configuración del formulario de contacto
+
+El formulario utiliza [EmailJS](https://www.emailjs.com/) para enviar las solicitudes a `mateoasturiaas@gmail.com`, sin exponer credenciales privadas en un backend. Para activarlo:
+
+1. Crea una cuenta de EmailJS y conecta el servicio de correo que recibirá los mensajes.
+2. Crea una plantilla de correo con el destinatario fijo `mateoasturiaas@gmail.com`.
+3. Usa estas variables en el contenido de la plantilla:
+   - `{{name}}`: nombre completo de quien contacta
+   - `{{phone}}`: teléfono de contacto
+   - `{{email}}`: correo de quien contacta
+   - `{{message}}`: mensaje opcional
+4. Configura el campo **Reply-To** de la plantilla como `{{email}}` para poder responder directamente al cliente.
+5. Copia `.env.example` a `.env.local` y completa los identificadores del servicio, la plantilla y la clave pública de EmailJS:
+
+```env
+VITE_EMAILJS_SERVICE_ID=tu_service_id
+VITE_EMAILJS_TEMPLATE_ID=tu_template_id
+VITE_EMAILJS_PUBLIC_KEY=tu_public_key
+```
+
+6. Reinicia el servidor de desarrollo después de crear o modificar `.env.local`. En producción, añade las mismas variables en la configuración de entorno de la plataforma donde se despliegue la web.
+
+La clave pública de EmailJS está diseñada para usarse en el navegador; nunca incluyas claves privadas o credenciales de correo en variables `VITE_*`. Configura las restricciones de dominio y las medidas antispam disponibles en EmailJS antes de publicar.
 
 ## Objetivo del proyecto
 
@@ -165,4 +191,3 @@ Jardinería Mateo
 ## Nota
 
 Este README ha sido diseñado para documentar el proyecto de forma clara y profesional, adaptado a una landing page para una firma de jardinería y mantenimiento exterior.
-

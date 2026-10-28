@@ -8,6 +8,7 @@ export function Testimonials() {
         <SectionHeading
           eyebrow="Opiniones"
           title="La confianza se cultiva"
+          description="Cada jardín tiene una historia: estos ejemplos reflejan la atención y el cuidado que queremos ofrecer en cada trabajo."
         />
         {testimonials.length > 0 ? (
           <ul className="grid gap-5 md:grid-cols-2">
