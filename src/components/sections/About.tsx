@@ -2,7 +2,14 @@ import { SectionHeading } from "../ui/SectionHeading";
 
 export function About() {
   return (
-    <section className="bg-sand/35 px-6 py-20 sm:py-28" id="nosotros">
+    <section
+      className="relative isolate overflow-hidden px-6 py-20 sm:py-28"
+      id="nosotros"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-ivory/80"
+      />
       <div className="mx-auto max-w-160 text-justify">
         <SectionHeading
           eyebrow="Nuestra filiosofía"
